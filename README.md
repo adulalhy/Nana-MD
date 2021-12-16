@@ -7,13 +7,13 @@
 <a href="#"><img title="NANA BOT MULTI DEVICE" src="https://img.shields.io/badge/NANA BOT MULTI DEVICE-green?colorA=%23ff0000&colorB=%23017e40&style=for-the-badge"></a>
 </p>
 <p align="center">
-<a href="https://github.com/adulalhy/nana-md"><img title="Author" src="https://img.shields.io/badge/Author-adulalhy-red.svg?style=for-the-badge&logo=github"></a>
+<a href="https://github.com/adulalhy/Nana-MD"><img title="Author" src="https://img.shields.io/badge/Author-adulalhy-red.svg?style=for-the-badge&logo=github"></a>
 </p>
 <p align="center">
-<a href="https://github.com/adulalhy/nana-md"><img title="Followers" src="https://img.shields.io/github/followers/adulalhy?color=blue&style=flat-square"></a>
-<a href="https://github.com/adulalhy/nana-md"><img title="Stars" src="https://img.shields.io/github/stars/adulalhy/nana-md?color=red&style=flat-square"></a>
-<a href="https://github.com/adulalhy/nana-md/network/members"><img title="Forks" src="https://img.shields.io/github/forks/adulalhy/nana-md?color=red&style=flat-square"></a>
-<a href="https://github.com/adulalhy/nana-md/watchers"><img title="Watching" src="https://img.shields.io/github/watchers/adulalhy/nana-md?label=Watchers&color=blue&style=flat-square"></a>
+<a href="https://github.com/adulalhy/Nana-MD"><img title="Followers" src="https://img.shields.io/github/followers/adulalhy?color=blue&style=flat-square"></a>
+<a href="https://github.com/adulalhy/Nana-MD"><img title="Stars" src="https://img.shields.io/github/stars/adulalhy/Nana-MD?color=red&style=flat-square"></a>
+<a href="https://github.com/adulalhy/Nana-MD/network/members"><img title="Forks" src="https://img.shields.io/github/forks/adulalhy/Nana-MD?color=red&style=flat-square"></a>
+<a href="https://github.com/adulalhy/Nana-MD/watchers"><img title="Watching" src="https://img.shields.io/github/watchers/adulalhy/Nana-MD?label=Watchers&color=blue&style=flat-square"></a>
 </p>
 
 ---
@@ -25,7 +25,7 @@
 >
 > • NOTE: Bot ini masih tahap Beta fiturnya juga masih dikit
 > 
-> • Kalo mau nambah fitur buat folder baru [disini](https://github.com/adulalhy/nana-md/tree/main/plugins)
+> • Kalo mau nambah fitur buat folder baru [disini](https://github.com/adulalhy/Nana-MD/tree/main/plugins)
 
 
 <h3 align="center">Made by :</h3>
@@ -42,8 +42,8 @@
 * Unduh & Instal ImageMagick [`Klik Disini`](https://imagemagick.org/script/download.php)
 
 ```bash
-git clone https://github.com/adulalhy/nana-md
-cd nana-md
+git clone https://github.com/adulalhy/Nana-MD
+cd Nana-MD
 npm install
 npm update
 npm index
@@ -53,8 +53,8 @@ npm index
 
 ## UNTUK PENGGUNA TERMUX
 ```bash
-git clone https://github.com/adulalhy/nana-md
-cd nana-md
+git clone https://github.com/adulalhy/Nana-MD
+cd Nana-MD
 npm i
 npm update
 node .
