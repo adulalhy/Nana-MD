@@ -79,7 +79,7 @@ Jika berhasil, akan memberikanmu pesan seperti: `SUCCESS: specified value was sa
 # Thanks to
 <a href="https://github.com/Nurutomo"><img src="https://github.com/Nurutomo.png?size=100" width="100" height="100"></a> | [![AdulAlhy](http://github.com/adulalhy.png?size=100)](http://github.com/adulalhy) | [![Ilman](https://github.com/ilmanhdyt.png?size=150)](https://github.com/ilmanhdyt) 
 ----|----|----
-[Nurutomo](https://github.com/Nurutomo) | [Adulalhy](http://github.com/adulalhy) |  | [Ilman](https://github.com/ilmanhdyt)
-Author | penulis ulang | Partner
+[Nurutomo](https://github.com/Nurutomo) | [Adul Alhy](https://github.com/adulalhy) | [Istikmal](https://github.com/ilmanhdyt)
+Author | penulis ulang 2 | penulis ulang 1
 ## Donate
 - [Saweria](https://saweria.co/adulalhy)
