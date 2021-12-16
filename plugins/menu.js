@@ -137,7 +137,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
            hydratedButtons: [{
              urlButton: {
                displayText: 'Source Code',
-               url: 'https://github.com/adulalhy'
+               url: 'https://github.com/adulalhy/Nana-MD'
              }
 
            },
