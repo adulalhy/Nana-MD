@@ -49,13 +49,14 @@ global.loadDatabase = async function loadDatabase() {
   await global.db.read()
   global.db.READ = false
   global.db.data = {
-    users: {},
-    chats: {},
-    stats: {},
-    msgs: {},
-    sticker: {},
-    ...(global.db.data || {})
-  }
+      users: {},
+      chats: {},
+      stats: {},
+      msgs: {},
+      sticker: {},
+      settings: {},
+      ...(global.db.data || {})
+    }
   global.db.chain = _.chain(global.db.data)
 }
 loadDatabase()
@@ -81,15 +82,16 @@ if (!opts['test']) {
     if (opts['autocleartmp'] && (global.support || {}).find) (tmp = [os.tmpdir(), 'tmp'], tmp.forEach(filename => cp.spawn('find', [filename, '-amin', '3', '-type', 'f', '-delete'])))
   }, 30 * 1000)
 }
+if (opts['server']) require('./server')(global.conn, PORT)
 
 async function connectionUpdate(update) {
   const { connection, lastDisconnect } = update
   global.timestamp.connect = new Date
   if (lastDisconnect && lastDisconnect.error && lastDisconnect.error.output && lastDisconnect.error.output.statusCode !== DisconnectReason.loggedOut && conn.ws.readyState !== WebSocket.CONNECTING) {
-    console.log(global.reloadHandler(true))
+   // console.log(global.reloadHandler(true))
   }
   if (global.db.data == null) await loadDatabase()
-  console.log(JSON.stringify(update, null, 4))
+ // console.log(JSON.stringify(update, null, 4))
 }
 
 
@@ -227,4 +229,4 @@ _quickTest()
 
 
  //Memberi Info Kepada Owner Apabila Bot Telah Online
-  conn.sendMessage('6281393190599@c.us', {text: 'Bot Online :)'})
+  conn.sendMessage('6281393190599@s.whatsapp.net', {text: 'Bot Online :)'})

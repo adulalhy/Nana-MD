@@ -191,9 +191,30 @@ module.exports = {
                     viewonce: false,
                     antiToxic: true,
                 }
-            } catch (e) {
-                console.error(e)
-            }
+			let settings = global.db.data.settings[this.user.jid]
+        if (typeof settings !== 'object') global.db.data.settings[global.conn] = {}
+        if (settings) {
+          if (!'anon' in settings) settings.anon = true
+          if (!'anticall' in settings) settings.anticall = true
+          if (!'antispam' in settings) settings.antispam = true
+          if (!'antitroli' in settings) settings.antitroli = true
+          if (!'backup' in settings) settings.backup = false
+          if (!isNumber(settings.backupDB)) settings.backupDB = 0
+          if (!'jadibot' in settings) settings.groupOnly = false
+          if (!isNumber(settings.status)) settings.status = 0
+        } else global.db.data.settings[this.user.jid] = {
+          anon: true,
+          anticall: true,
+          antispam: true,
+          antitroli: true,
+          backup: false,
+          backupDB: 0,
+          jadibot: true,
+          status: 0,
+        }
+      } catch (e) {
+        console.error(e)
+      }
             if (opts['nyimak']) return
             if (!m.fromMe && opts['self']) return
             if (opts['pconly'] && m.chat.endsWith('g.us')) return
@@ -227,12 +248,13 @@ module.exports = {
             let isOwner = isROwner || m.fromMe
             let isMods = isOwner || global.mods.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
             let isPrems = isROwner || global.prems.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
+			if (!isPrems && !m.isGroup && global.db.data.settings.groupOnly) return
             let groupMetadata = (m.isGroup ? (conn.chats[m.chat] || {}).metadata : {}) || {}
             let participants = (m.isGroup ? groupMetadata.participants : []) || []
             let user = (m.isGroup ? participants.find(u => conn.decodeJid(u.id) === m.sender) : {}) || {} // User Data
             let bot = (m.isGroup ? participants.find(u => conn.decodeJid(u.id) == this.user.jid) : {}) || {} // Your Data
-            let isAdmin = user && user.admin || false // Is User Admin?
-            let isBotAdmin = bot && bot.admin || false // Are you Admin?
+            let isAdmin = user?.admin || user?.superadmin || false // Apakah user admin?
+            let isBotAdmin = bot?.admin || bot?.superadmin || false // Apakah user admin?
             for (let name in global.plugins) {
                 let plugin = global.plugins[name]
                 if (!plugin) continue
@@ -390,7 +412,7 @@ module.exports = {
                                 console.error(e)
                             }
                         }
-                        if (m.limit) m.reply(+ m.limit + ' Limit terpakai')
+                        //if (m.limit) m.reply(+ m.limit + ' Limit terpakai') 
                     }
                     break
                 }
@@ -473,7 +495,7 @@ module.exports = {
             case 'demote':
                 if (!text) text = (chat.sDemote || this.sdemote || conn.sdemote || '@user ```is no longer Admin```')
                 text = text.replace('@user', '@' + participants[0].split('@')[0])
-                if (chat.detect) this.sendMessage(id, text, MessageType.extendedText, {
+                if (chat.detect) this.sendMessage(id, { text: text }, {
                     contextInfo: {
                         mentionedJid: this.parseMention(text)
                     }

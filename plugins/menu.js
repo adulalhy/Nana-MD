@@ -2,29 +2,53 @@ const { default: makeWASocket, BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessa
 let fs = require('fs')
 let path = require('path')
 let levelling = require('../lib/levelling')
+let totalfeature = Object.values(global.plugins).filter(
+    (v) => v.help && v.tags
+  ).length;let totalfeature = Object.values(global.plugins).filter(
+    (v) => v.help && v.tags
+  ).length;
 let tags = {
   'main': 'MENU UTAMA',
+  'game': 'MENU GAME',
+  'rpg': 'MENU RPG',
+  'xp': 'MENU EXP',
+  'group': 'MENU GROUP',
+  'owner': 'MENU OWNER',
   'fun': 'MENU FUN',
+  'sticker': 'MENU CONVERT',
+  'maker': 'MENU MAKER',
+  'github': 'MENU GITHUB',
+  'internet': 'INTERNET',
+  'kerang': 'MENU KERANG',
   'anime': 'MENU ANIME',
-  'advanced': 'Advanced',
+  'nsfw': 'MENU NSFW',
+  'tools': 'MENU TOOLS',
+  'advanced': 'ADVANCED',
+  'privasi': 'MENU PRIVASI',
   'info': 'MENU INFO',
 }
 const defaultMenu = {
   before: `
-╭─「 %me 」
-│ Hai, %name!
-│
-│ Tersisa *%limit Limit*
-│ Role *%role*
-│ Level *%level (%exp / %maxexp)* [%xp4levelup lagi untuk levelup]
-│ %totalexp XP in Total
-│ 
-│ Tanggal: *%week %weton, %date*
-│ Tanggal Islam: *%dateIslamic*
-│ Waktu: *%time*
-│
-│ Runtime: *%uptime*
-╰────
+╭────ꕥ %me ꕥ────
+│✾ Version: %version
+│✾ Library: Baileys-MD
+│✾ Runtime: %uptime
+╰❑
+╭─❑ 「 INFO USER 」 ❑──
+│ ✾ Name: %name
+│ ✾ Total Features : ${totalfeature}
+│ ✾ Limit: %limit
+│ ✾ Money: %money
+│ ✾ Exp: %totalexp
+│ ✾ Level: %level
+│ ✾ Role: %role
+│ ✾ Number of Registered Users : %rtotalreg From %totalreg
+╰❑
+╭─❑ 「 INFORMASI 」 ❑──
+│ Bot ini masih tahap beta
+│ apabila ada bug/eror harap
+│ lapor ke owner
+╰❑
 %readmore`.trimStart(),
   header: '╭─「 %category 」',
   body: '│ • %cmd %islimit %isPremium',
@@ -36,10 +60,14 @@ ${'```%npmdesc```'}
 }
 let handler = async (m, { conn, usedPrefix: _p }) => {
   try {
-    let package = JSON.parse(await fs.promises.readFile(path.join(__dirname, '../package.json')).catch(_ => '{}'))
-    let { exp, limit, level, role } = global.db.data.users[m.sender]
+   let package = JSON.parse(await fs.promises.readFile(path.join(__dirname, '../package.json')).catch(_ => '{}'))
+    let who
+    if (m.isGroup) who = m.mentionedJid[0] ? m.mentionedJid[0] : m.sender
+    else who = m.sender 
+    let user = global.db.data.users[who]
+    let { exp, limit, level, money, role } = global.db.data.users[m.sender]
     let { min, xp, max } = levelling.xpRange(level, global.multiplier)
-    let name = conn.getName(m.sender)
+    let name = m.pushName
     let d = new Date(new Date + 3600000)
     let locale = 'id'
     // d.getTimeZoneOffset()
@@ -130,11 +158,14 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
       readmore: readMore
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
-     const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+      const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
      templateMessage: {
          hydratedTemplate: {
            hydratedContentText: text.trim(),
-           hydratedButtons: [{
+           locationMessage: { 
+           jpegThumbnail: fs.readFileSync('./src/nana2.jpg') },
+           hydratedFooterText: 'Nana-MD',
+           hydratedButtons: [{ 
              urlButton: {
                displayText: 'Source Code',
                url: 'https://github.com/adulalhy/Nana-MD'
@@ -144,7 +175,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
                {
              callButton: {
                displayText: 'Call Owner',
-               phoneNumber: '+62'
+               phoneNumber: '123'
              }
            },
                {
@@ -179,7 +210,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
      )
   } catch (e) {
     conn.reply(m.chat, 'Maaf, menu sedang error', m)
-    throw e
+    //throw e
   }
 }
 handler.help = ['menu', 'help', '?']

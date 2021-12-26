@@ -40,7 +40,7 @@ global.APIKeys = {
   'https://hardianto-chan.herokuapp.com': 'hardianto',
   'https://neoxr-api.herokuapp.com': 'yntkts',
   'https://pencarikode.xyz': 'pais',
-  'https://api.xteam.xyz': 'HIRO',
+  'https://api.xteam.xyz': 'cristian9407',
   'http://api.vhtear.com': 'HIROZTWO',
   'https://api.lolhuman.xyz': 'HIRO',
   'https://zahirr-web.herokuapp.com': 'zahirgans',
@@ -55,9 +55,10 @@ global.author = 'Adul Alhy'
 
 global.sessionid = '48736705854:2Tq6joffmVDzaS:24' // ID Sesi Instagram, Kamu Bisa Menganti Dengan Sesi Milikmu
 global.multiplier = 69 // Semakin Tinggi Angka/Nilai, Maka Peningkatan Level Akan Semakin Sulit
-global.wait = '_*Please Wait . . . . *_' // Pesan Saat Memuat / Menunggu
+global.wait = '_*Please Wait . . . .*_' // Pesan Saat Memuat / Menunggu
 global.eror = '_*Server Sedang Mengalami Error { Error:404 }*_' // Pesan Jika Mengalami Error
-global.fla = 'https://i.ibb.co/jy23Sgc/wallhaven-mdwkxm-min.jpg'
+global.fla = 'https://i.ibb.co/fSNR9D5/f7c4913eefb1.jpg'
+global.getBuffer = getBuffer
 
 
 global.rpg = {
@@ -91,7 +92,9 @@ global.rpg = {
     else return emot[results[0][0]]
   }
 }
-
+function getBuffer(buffer) {
+return ez(buffer).then(a => a.buffer())
+}  
 let file = require.resolve(__filename)
 fs.watchFile(file, () => {
   fs.unwatchFile(file)

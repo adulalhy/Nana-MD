@@ -16,7 +16,7 @@ handler.all = async function (m, { isPrems }) {
 
     if (/^.*tiktok/i.test(m.text)) {
         let res = await fetch(API('hardianto', '/api/download/tiktok', { url }, 'apikey'))
-        if (!res.ok) return m.reply(eror)
+        if (!res.ok) return 
         let json = await res.json()
         await m.reply(wait)
         // m.reply(util.format(json))
@@ -25,7 +25,7 @@ handler.all = async function (m, { isPrems }) {
 
     if (/^.*cocofun/i.test(m.text)) {
         let res = await fetch(API('jojo', '/api/cocofun-no-wm', { url }))
-        if (!res.ok) return m.reply(eror)
+        if (!res.ok) return 
         let json = await res.json()
         await m.reply(wait)
         // m.reply(util.format(json))
@@ -34,7 +34,7 @@ handler.all = async function (m, { isPrems }) {
 
     if (/^.*(fb.watch|facebook.com)/i.test(m.text)) {
         let res = await fetch(API('neoxr', '/api/download/fb', { url }, 'apikey'))
-        if (!res.ok) return m.reply(eror)
+        if (!res.ok) return 
         let json = await res.json()
         if (!json.status) return m.reply(util.format(json))
         await m.reply(wait)
@@ -56,7 +56,7 @@ handler.all = async function (m, { isPrems }) {
         pin(url).then(async res => {
             let pin = JSON.stringify(res)
             let json = JSON.parse(pin)
-            if (!json.status) return m.reply(eror)
+            if (!json.status) return 
             await m.reply(wait)
             m.reply(util.format(json))
             await this.sendFile(m.chat, json.data.url, '', 'Nana-BOT', m)
@@ -92,8 +92,8 @@ handler.all = async function (m, { isPrems }) {
                 m.reply(`Server ${server} error!${servers.length >= i + 1 ? '' : '\nmencoba server lain...'}`)
             }
         }
-        if (yt === false) return m.reply(eror)
-        if (yt2 === false) return m.reply(eror)
+        if (yt === false) return 
+        if (yt2 === false) return 
         let { dl_link, thumb, title, filesize, filesizeF } = yt
         await this.send2ButtonLoc(m.chat, await (await fetch(thumb)).buffer(), `
 *Judul:* ${title}

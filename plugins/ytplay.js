@@ -14,7 +14,7 @@ memeq = Math.floor(Math.random() * 99999999)
 let buttons = [
   {buttonId: '/yta '+vid.url, buttonText: {displayText: 'Music 🎵'}, type: 1},
   {buttonId: '/ytv '+vid.url, buttonText: {displayText: 'Video 📼'}, type: 1},
-{buttonId: '/cancel '+vid.videoId+memeq, buttonText: {displayText: 'Delete 🗑️'}, type: 1}
+{buttonId: '/delete '+vid.videoId+memeq, buttonText: {displayText: 'Delete 🗑️'}, type: 1}
 ]
 
 
@@ -23,6 +23,7 @@ const buttonsMessage = {
     caption:`Lagu Ditemukan!
 Silahkan Pilih Format Yang Mau Dikirim`.trim(),    footerText: 'Filesize : '+filesizeF,
     buttons: buttons,
+	footer: 'Nana-MD',
      headerType: 4
 }
 let sendMsg =  await conn.sendMessage(m.chat, buttonsMessage)

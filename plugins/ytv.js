@@ -16,11 +16,10 @@ let handler = async (m, { conn, args, isPrems, isOwner, usedPrefix, command }) =
 *Judul:* ${title}
 *Ukuran File:* ${filesizeF}
   `.trim(), m, 0, {
-      ..._thumb,
-      asDocument: chat.useDocument
+      ..._thumb
     })
   } catch (e) {
-    return await conn.sendButton(m.chat, 'Server Error', '', 'COBA LAGI', `${usedPrefix + command} ${args[0]}`)
+    return await m.reply(`SERVER SEDANG ERROR :(`)
   }
 }
 handler.help = ['mp4', 'v', ''].map(v => 'yt' + v + ` <url> [server: ${servers.join(', ')}]`)
