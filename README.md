@@ -9,12 +9,6 @@
 <p align="center">
 <a href="https://github.com/adulalhy/Nana-MD"><img title="Author" src="https://img.shields.io/badge/Author-adulalhy-red.svg?style=for-the-badge&logo=github"></a>
 </p>
-<p align="center">
-<a href="https://github.com/adulalhy/Nana-MD"><img title="Followers" src="https://img.shields.io/github/followers/adulalhy?color=blue&style=flat-square"></a>
-<a href="https://github.com/adulalhy/Nana-MD"><img title="Stars" src="https://img.shields.io/github/stars/adulalhy/Nana-MD?color=red&style=flat-square"></a>
-<a href="https://github.com/adulalhy/Nana-MD/network/members"><img title="Forks" src="https://img.shields.io/github/forks/adulalhy/Nana-MD?color=red&style=flat-square"></a>
-<a href="https://github.com/adulalhy/Nana-MD/watchers"><img title="Watching" src="https://img.shields.io/github/watchers/adulalhy/Nana-MD?label=Watchers&color=blue&style=flat-square"></a>
-</p>
 
 ---
 
@@ -83,9 +77,9 @@ Jika berhasil, akan memberikanmu pesan seperti: `SUCCESS: specified value was sa
 ```
 
 # Thanks to
-<a href="https://github.com/Nurutomo"><img src="https://github.com/Nurutomo.png?size=100" width="100" height="100"></a> | [![AdulAlhy](http://github.com/adulalhy.png?size=100)](http://github.com/adulalhy)
-----|----
-[Nurutomo](https://github.com/Nurutomo) | [Adulalhy](http://github.com/adulalhy) | [Ilman] (http://github.com/ilmanhdyt)
-Author | penulis ulang | Partner
+<a href="https://github.com/Nurutomo"><img src="https://github.com/Nurutomo.png?size=100" width="100" height="100"></a> | [![AdulAlhy](http://github.com/adulalhy.png?size=100)](http://github.com/adulalhy) | [![Ilman](https://github.com/ilmanhdyt.png?size=150)](https://github.com/ilmanhdyt) 
+----|----|----
+[Nurutomo](https://github.com/Nurutomo) | [Adul Alhy](https://github.com/adulalhy) | [Ilman (ShiraoriBOT)](https://github.com/ilmanhdyt)
+Author | penulis ulang 2 | penulis ulang 1
 ## Donate
 - [Saweria](https://saweria.co/adulalhy)
