@@ -27,7 +27,7 @@
   <a href="https://github.com/adulalhy"><img src="https://github.com/adulalhy.png?size=150)](https://github.com/adulalhy" height="128" width="128" /></a>
 </p>
 
-
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/adulalhy/Nana-MD)
 ## UNTUK PENGGUNA WINDOWS/VPS/RDP
 
 * Unduh & Instal Git [`Klik Disini`](https://git-scm.com/downloads)
@@ -77,9 +77,9 @@ Jika berhasil, akan memberikanmu pesan seperti: `SUCCESS: specified value was sa
 ```
 
 # Thanks to
-<a href="https://github.com/Nurutomo"><img src="https://github.com/Nurutomo.png?size=100" width="100" height="100"></a> | [![AdulAlhy](http://github.com/adulalhy.png?size=100)](http://github.com/adulalhy) | [![Ilman](https://github.com/ilmanhdyt.png?size=150)](https://github.com/ilmanhdyt) 
-----|----|----
-[Nurutomo](https://github.com/Nurutomo) | [Adul Alhy](https://github.com/adulalhy) | [Ilman (ShiraoriBOT)](https://github.com/ilmanhdyt)
-Author | penulis ulang 2 | penulis ulang 1
+<a href="https://github.com/Nurutomo"><img src="https://github.com/Nurutomo.png?size=100" width="100" height="100"></a> | [![AdulAlhy](http://github.com/adulalhy.png?size=100)](http://github.com/adulalhy) | [![Ilman](https://github.com/ilmanhdyt.png?size=150)](https://github.com/ilmanhdyt) | [![Fazone](https://github.com/fazonetea.png?size=150)](https://github.com/fazonetea) 
+----|----|----|----
+[Nurutomo](https://github.com/Nurutomo) | [Adul Alhy](https://github.com/adulalhy) | [Ilman (ShiraoriBOT)](https://github.com/ilmanhdyt) | [Fazone](https://github.com/fazonetea)
+Author | Owner Nana-MD | Partner | Best Partner
 ## Donate
 - [Saweria](https://saweria.co/adulalhy)
