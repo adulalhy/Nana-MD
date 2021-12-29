@@ -1,3 +1,4 @@
+[![Deploy Nana-MD](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/adulalhy/Nana-MD)
 <p align="center">
 <img src="https://i.ibb.co/5shXwhS/8333516ae82a.jpg" alt="NANA BOT" width="500"/>
 
@@ -27,7 +28,7 @@
   <a href="https://github.com/adulalhy"><img src="https://github.com/adulalhy.png?size=150)](https://github.com/adulalhy" height="128" width="128" /></a>
 </p>
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/adulalhy/Nana-MD)
+
 ## UNTUK PENGGUNA WINDOWS/VPS/RDP
 
 * Unduh & Instal Git [`Klik Disini`](https://git-scm.com/downloads)
@@ -75,6 +76,51 @@ Jika berhasil, akan memberikanmu pesan seperti: `SUCCESS: specified value was sa
 ```cmd
 > ffmpeg -version
 ```
+
+## Arguments `node . [--options] [<session name>]`
+
+### `--session <file name>`
+
+Use another session with another name, default is ```session.data.json```
+
+### `--prefix <prefixes>`
+
+* `prefixes` are seperated by each character
+Set prefix
+
+### `--server`
+
+Used for [heroku](https://heroku.com/) or scan through website
+
+### `--db <json-server-url>`
+
+Use external db instead of local db, 
+Example Server `https://json-server.nurutomo.repl.co/`
+
+Code: `https://repl.it/@AdulAlhy/json-server`
+
+`node . --db 'https://json-server.adulalhy.repl.co/'`
+
+The server should have like this specification
+
+#### GET
+
+```http
+GET /
+Accept: application/json
+```
+
+#### POST
+
+```http
+POST /
+Content-Type: application/json
+
+{
+ data: {}
+}
+```
+
 
 # Thanks to
 <a href="https://github.com/Nurutomo"><img src="https://github.com/Nurutomo.png?size=100" width="100" height="100"></a> | [![AdulAlhy](http://github.com/adulalhy.png?size=100)](http://github.com/adulalhy) | [![Ilman](https://github.com/ilmanhdyt.png?size=150)](https://github.com/ilmanhdyt) | [![Fazone](https://github.com/fazonetea.png?size=150)](https://github.com/fazonetea) 
