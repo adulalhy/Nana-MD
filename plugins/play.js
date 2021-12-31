@@ -27,20 +27,10 @@ const cardJoox = new canvas.Spotify()
 ${isLimit ? '*Pakai Link:* '+await bitly(dl_link): ''}
 `,m )
                     })
-   if (isVideo) {
-   if (!isLimit) conn.sendFile(m.chat, dl_link, '',title, m)
+      if (isVideo) {
+   if (!isLimit) conn.sendMessage(m.chat, { video: await getBuffer(dl_link), caption: title }, { quoted: m, mimetype: 'video/mp4',  upload: conn.waUploadToServer })
    } else {
-   if (!isLimit) conn.sendFile(m.chat, dl_link, '',title, m,  {
-   contextInfo : {
-    externalAdReply: {
-                    title,
-                    body: vid.description,
-                    mediaType: 2,
-                    thumbnailUrl: thumb,
-                    mediaUrl: vid.url
-                }
-     }
-   })
+   if (!isLimit) conn.sendMessage(m.chat, { audio: await getBuffer(dl_link) }, { mimetype: 'audio/mp4', quoted: m,  upload: conn.waUploadToServer })
    }
 }
 handler.help = ['play', 'play2'].map(v => v + ' <pencarian>')
