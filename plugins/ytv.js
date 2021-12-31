@@ -16,7 +16,7 @@ let handler = async (m, { conn, args, isPrems, isOwner, usedPrefix, command }) =
 *Judul:* ${title}
 *Ukuran File:* ${filesizeF}
   `.trim(), m, 0, {
-      ..._thumb
+      ..._thumb, upload: conn.waUploadToServer
     })
   } catch (e) {
     return await m.reply(`SERVER SEDANG ERROR :(`)
