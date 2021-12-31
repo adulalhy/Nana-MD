@@ -1,6 +1,7 @@
 //Created By Adul Alhy [Jangan dihapus ya bang :)]
 
 let handler = async (m, { conn, args, usedPrefix, command, text }) => {
+	if (!text) throw `Caranya: .addprem @user|30`
 	 function no(number){
     return number.replace(/\s/g,'').replace(/([@+-])/g,'')
   }
@@ -17,7 +18,7 @@ let handler = async (m, { conn, args, usedPrefix, command, text }) => {
   conn.reply(m.chat,`*❏ UPGRADE PREMIUM*\n\nBerhasil menambahkan akses premium kepada *@${hl[0].split('@')[0]}* selama *${hl[1]} hari*.\n\n*Premium : ${msToDate(global.DATABASE.data.users[hl[0]].premiumDate - now)}*`,m,{ contextInfo: { mentionedJid: [hl[0]] } })
   conn.reply(hl[0],`*❏ UPGRADE PREMIUM*\n\nBerhasil menambahkan akses premium kepada *@${hl[0].split('@')[0]}* selama *${hl[1]} hari*.\n\n*Premium : ${msToDate(global.DATABASE.data.users[hl[0]].premiumDate - now)}*`,m,{ contextInfo: { mentionedJid: [hl[0]] } }) 
 }
-handler.help = ['addprem @user 7']
+handler.help = ['addprem @user|7']
 handler.tags = ['owner']
 handler.command = /^(addprem)$/i
 handler.owner = true
