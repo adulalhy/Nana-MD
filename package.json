@@ -63,7 +63,7 @@
         "is-porn": "^0.9.0",
         "jsdom": "^18.1.1",
         "lodash": "^4.17.21",
-        "lowdb": "^2.1.0",
+        "lowdb": "^3.0.0",
         "moment-timezone": "^0.5.34",
         "mongoose": "^6.0.14",
         "nekos.life": "^2.0.7",
