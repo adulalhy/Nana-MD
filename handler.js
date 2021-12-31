@@ -95,6 +95,14 @@ module.exports = {
                     if (!isNumber(user.lasthunt)) user.lasthunt = 0
                     if (!isNumber(user.lastweekly)) user.lastweekly = 0
                     if (!isNumber(user.lastmonthly)) user.lastmonthly = 0
+          if (!isNumber(user.level)) user.level = 0
+          if (!isNumber(user.call)) user.call = 0
+          if (!isNumber(user.pc)) user.pc = 0
+          if (!isNumber(user.warning)) user.warning = 0
+          if (!('pasangan' in user)) user.pasangan = ''
+		  if (!isNumber(user.premiumDate)) user.premiumDate = 0
+		  if (!'premium' in user) user.premium = false
+		   if (!isNumber(user.suit)) user.suit = 0
                 } else global.db.data.users[m.sender] = {
                     exp: 0,
                     limit: 10,
@@ -162,7 +170,14 @@ module.exports = {
                     lastmining: 0,
                     lasthunt: 0,
                     lastweekly: 0,
-                    lastmonthly: 0,
+                    lastmonthly: 0, 
+					warning: 0,
+					pc: 0,
+					call: 0,
+          pasangan: '',
+		  premium: false,
+		  premiumDate: 0,
+		  suit: 0,
                 }
                 let chat = global.db.data.chats[m.chat]
                 if (typeof chat !== 'object') global.db.data.chats[m.chat] = {}
@@ -253,8 +268,8 @@ module.exports = {
             let participants = (m.isGroup ? groupMetadata.participants : []) || []
             let user = (m.isGroup ? participants.find(u => conn.decodeJid(u.id) === m.sender) : {}) || {} // User Data
             let bot = (m.isGroup ? participants.find(u => conn.decodeJid(u.id) == this.user.jid) : {}) || {} // Your Data
-            let isAdmin = user?.admin || user?.superadmin || false // Apakah user admin?
-            let isBotAdmin = bot?.admin || bot?.superadmin || false // Apakah user admin?
+             let isAdmin = user && user.admin || false // Is User Admin?
+            let isBotAdmin = bot && bot.admin || false // Are you Admin?
             for (let name in global.plugins) {
                 let plugin = global.plugins[name]
                 if (!plugin) continue
@@ -468,28 +483,72 @@ module.exports = {
         if (global.isInit) return
         let chat = global.db.data.chats[id] || {}
         let text = ''
-        switch (action) {
-            case 'add':
-            case 'remove':
-                if (chat.welcome) {
-                    let groupMetadata = await this.groupMetadata(id) || (conn.chats[id] || {}).metadata
-                    for (let user of participants) {
-                        let pp = './src/avatar_contact.png'
-                        try {
-                            pp = await this.getProfilePicture(user)
-                        } catch (e) {
-                        } finally {
-                            text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user!').replace('@subject', this.getName(id)).replace('@desc', groupMetadata.desc.toString()) :
-                                (chat.sBye || this.bye || conn.bye || 'Bye, @user!')).replace('@user', '@' + user.split('@')[0])
-                            this.sendFile(id, pp, 'pp.jpg', text, null, false, {
-                                contextInfo: {
-                                    mentionedJid: [user]
-                                }
-                            })
-                        }
-                    }
+       switch (action) {
+      case 'add':
+      if (chat.welcome) {
+          let groupMetadata = await this.groupMetadata(jid)
+          for (let user of participants) {
+            // let pp = './src/avatar_contact.png'
+            let pp = './src/pp.png'
+            let ppgc = './src/pp.png'
+            let bgimage = "./src/bgimage.jpg"
+            try {
+              pp = await uploadImage(await (await fetch(await this.profilePictureUrl(user))).buffer())
+              ppgc = await uploadImage(await (await fetch(await this.profilePictureUrl(jid))).buffer())
+            } catch (e) {
+            } finally {
+              text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Selamat datang, @user!').replace('@subject', this.getName(jid)).replace('@desc', groupMetadata.desc ? String.fromCharCode(8206).repeat(4001) + groupMetadata.desc : '') :
+                (chat.sBye || this.bye || conn.bye || 'Sampai jumpa, @user!')).replace(/@user/g, '@' + user.split`@`[0])
+              let welcome = await new knights.Welcome2()
+                .setAvatar(pp)
+                .setUsername(this.getName(user)) 
+                .setBg(bgimage) 
+                .setGroupname(this.getName(jid)) 
+                .setMember(groupMetadata.participants.length) 
+                .toAttachment();
+
+              this.sendFile(jid, welcome, 'welcome.jpg', text, null, false, {
+                contextInfo: {
+                  mentionedJid: [user]
                 }
-                break
+              })
+            }
+          }
+        }
+        break
+      case 'remove':
+        if (chat.welcome) {
+          let groupMetadata = await this.groupMetadata(jid)
+          for (let user of participants) {
+            // let pp = './src/avatar_contact.png'
+            let pp = './src/pp.png'
+            let ppgc = './src/pp.png'
+            let bgimage = "./src/bgimage.jpg"
+            try {
+              pp = await uploadImage(await (await fetch(await this.profilePictureUrl(user))).buffer())
+              ppgc = await uploadImage(await (await fetch(await this.profilePictureUrl(jid))).buffer())
+            } catch (e) {
+            } finally {
+              text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Selamat datang, @user!').replace('@subject', this.getName(jid)).replace('@desc', groupMetadata.desc ? String.fromCharCode(8206).repeat(4001) + groupMetadata.desc : '') :
+                (chat.sBye || this.bye || conn.bye || 'Sampai jumpa, @user!')).replace(/@user/g, '@' + user.split`@`[0])
+              let leave = await new knights.Goodbye()
+                .setUsername(this.getName(user))
+                .setGuildName(this.getName(jid))
+                .setGuildIcon(ppgc)
+                .setMemberCount(groupMetadata.participants.length)
+                .setAvatar(pp)
+                .setBackground(bgimage)
+                .toAttachment()
+
+              this.sendFile(jid, leave, 'leave.jpg', text, null, false, {
+                contextInfo: {
+                  mentionedJid: [user]
+                }
+              })
+            }
+          }
+        }
+        break
             case 'promote':
                 text = (chat.sPromote || this.spromote || conn.spromote || '@user ```is now Admin```')
             case 'demote':
