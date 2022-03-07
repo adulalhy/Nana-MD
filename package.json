@@ -90,7 +90,7 @@
         "node-gtts": "^2.0.2",
         "waifu.pics": "^0.0.2",
         "nana-api": "^1.1.4",
-        "nhentai": "^2.1.1",
+        "nhentai": "^3.0.0",
         "canvacord": "^5.2.3",
         "yargs": "^17.2.1",
         "yt-search": "^2.10.2"
