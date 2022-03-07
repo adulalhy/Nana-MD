@@ -81,7 +81,7 @@
         "qrcode": "^1.5.0",
         "readline": "^1.3.0",
         "spotify": "^0.3.0",
-        "spotifydl-core": "^0.1.2",
+        "spotifydl-core": "^0.2.0",
         "similarity": "^1.2.1",
         "syntax-error": "^1.4.0",
         "terminal-image": "^2.0.0",
